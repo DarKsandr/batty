@@ -58,19 +58,16 @@ class Ball{
     }
 
     changeDirection(){
-        const is_top = this.y - this.radius <= 0;
-        const is_left = this.x - this.radius <= 0;
-        const is_right = this.x + this.radius >= this.canvas.width;
         switch(this.direction){
             case Ball.UP_RIGHT:
-                if(is_top){
+                if(this.is_top()){
                     this.direction = Ball.DOWN_RIGHT;
                 } else {
                     this.direction = Ball.UP_LEFT;
                 }
                 break;
             case Ball.UP_LEFT:
-                if(is_left){
+                if(this.is_left()){
                     this.direction = Ball.UP_RIGHT;
                 } else {
                     this.direction = Ball.DOWN_LEFT;
@@ -80,13 +77,29 @@ class Ball{
                 this.direction = Ball.DOWN_RIGHT;
                 break;
             case Ball.DOWN_RIGHT:
-                if(is_right){
+                if(this.is_right()){
                     this.direction = Ball.DOWN_LEFT;
                 } else {
                     this.direction = Ball.UP_RIGHT;
                 }
                 break;
         }
+    }
+
+    is_top(){
+        return this.y - this.radius <= 0;
+    }
+
+    is_bottom(){
+        return this.y + this.radius >= this.canvas.height;
+    }
+
+    is_left(){
+        return this.x - this.radius <= 0;
+    }
+
+    is_right(){
+        return this.x + this.radius >= this.canvas.width;
     }
 }
 

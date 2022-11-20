@@ -1,4 +1,4 @@
-class Platform{
+class Block{
     constructor(ctx, canvas, x, y, width, height){
         this.ctx = ctx;
         this.canvas = canvas;
@@ -10,15 +10,9 @@ class Platform{
 
     draw(){
         this.ctx.beginPath();
-        this.ctx.roundRect(this.x, this.y, this.width, this.height, 10);
+        this.ctx.roundRect(this.x, this.y, this.width, this.height, 2);
         this.ctx.stroke();
-    }
-
-    changeX(x){
-        if(x > 0 && x < this.canvas.width - this.width){
-            this.x = x;
-        }
     }
 }
 
-export default Platform;
+export default Block;
