@@ -37,7 +37,15 @@ class Game{
 
         this.timeGameId = setInterval(() => {
             this.ball.move();
-        }, 1000);
+            if(
+                this.ball.x >= this.platform.x && 
+                this.ball.x <= this.platform.x + this.platform.width && 
+                this.ball.y >= this.platform.y - this.ball.radius &&
+                this.ball.y <= this.platform.y + this.platform.height
+            ){
+                this.ball.changeDirection();
+            }
+        }, 15);
     }
 
     clear(){
